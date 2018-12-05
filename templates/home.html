@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Shop Homepage - Cool View Store</title>
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+	body {
+		padding-top: 54px;
+	}
+
+	@media (min-width: 992px) {
+		body {
+			padding-top: 56px;
+		}
+	}
+	div.filter_numbers {
+		display: inline-flex;
+	}
+
+	div.filter_numbers input {
+		width: 80px;
+		margin-right: 10px;
+	}
+
+	div.filter_numbers input:last-child {
+		margin-left: 10px;
+		margin-right: 0;
+	}
+	.scroll-v-200px {
+		max-height: 200px;
+		overflow-y: scroll;
+	}
+	.navbar-brand img {
+		    height: 100px;
+			display: block;
+			margin: 0 auto;
+			width: 100px;
+		}
+		.row {
+			margin-top: 70px;
+		}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg bg-light fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="/"><img src="{{ url_for("static", filename='images/logo.png') }}" height="50" width="100" alt=""></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class=" navbar-" id="navbarResponsive">
+
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-lg-3">
+
+				<div class="panel-group">
+					<div class="panel panel-default">
+						<div class="panel-heading mt-4">
+							<h4 class="panel-title">
+								Filter
+							</h4>
+						</div>
+						<hr class="line"/>
+						<div id="filter1" class="panel-  in show">
+							<div class="panel-body">
+								<div class="filter-setting">
+									<form action="" mathod="GET">
+										<label>Lens Diameter</label>
+										<input type="hidden", name="filter", value="True">
+										<a class="pull-right collapsed-icon-toggle" href="#coll-0" data-toggle="">
+											<span class="glyphicon glyphicon-minus on-opened"></span>
+											<span class="glyphicon glyphicon-plus on-closed"></span>
+										</a>
+										<br/>
+										<div class="filter_numbers">
+											<input type="number" name="min__lens_diameter" placeholder="1" value="{{ data.filters.min_lens_d }}"/>
+											-
+											<input type="number" name="max__lens_diameter" placeholder="1.5" value="{{ data.filters.max_lens_d }}" />
+										</div>
+
+										<label>Bridge width</label>
+										<a class="pull-right collapsed-icon-toggle" href="#coll-0" data-toggle="">
+											<span class="glyphicon glyphicon-minus on-opened"></span>
+											<span class="glyphicon glyphicon-plus on-closed"></span>
+										</a>
+										<br/>
+										<div class="filter_numbers">
+											<input type="number" name="min__bridge_width" placeholder="1" value="{{ data.filters.min_bridge_w }}" />
+											-
+											<input type="number" name="max__bridge_width" placeholder="1.5" value="{{ data.filters.max_bridge_w }}"/>
+										</div>
+
+										<label>Side length</label>
+										<a class="pull-right collapsed-icon-toggle" href="#coll-0" data-toggle="">
+											<span class="glyphicon glyphicon-minus on-opened"></span>
+											<span class="glyphicon glyphicon-plus on-closed"></span>
+										</a>
+										<br/>
+										<div class="filter_numbers">
+											<input type="number" name="min__side_length" placeholder="1" value="{{ data.filters.min_side_l }}" />
+											-
+											<input type="number" name="max__side_length" placeholder="1.5" value="{{ data.filters.max_side_l }}" />
+										</div>
+
+										<hr class="line"/>
+										<label>Brands</label>
+										<a class="pull-right d-icon-toggle" href="#coll-1" data-toggle="">
+											<span class="glyphicon glyphicon-minus on-opened"></span>
+											<span class="glyphicon glyphicon-plus on-closed"></span>
+										</a>
+										<br/>
+										<div id="coll-1" class="scroll-v-200px ml-3">
+											<div class="padding-v-xs">
+												<label class="checkbox_label" for="checkbox1">
+													<input type="radio" id="checkbox1" name="brand" value="Carrera" {{ "checked" if data.filters.brand == "Carrera" else "" }} />
+													<span>Carrera</span>
+												</label>
+											</div>
+											<div class="padding-v-xs">
+												<label class="checkbox_label" for="checkbox2">
+													<input type="radio" id="checkbox2" name="brand" value="Warby Parker" {{ "checked" if data.filters.brand == "Warby Parker" else "" }} />
+													<span>Warby Parker</span>
+													<span class="icon glyphicon glyphicon-ok"></span>
+												</label>
+											</div>
+											<div class="padding-v-xs">
+												<label class="checkbox_label" for="checkbox3">
+													<input type="radio" id="checkbox3" name="brand" value="Ray-Ban" {{ "checked" if data.filters.brand == "Ray-Ban" else "" }} />
+													<span>Ray-Ban</span>
+													<span class="icon glyphicon glyphicon-ok"></span>
+												</label>
+											</div>
+										</div>
+										
+										
+										
+										<hr class="line"/>
+										<button type="submit" class="btn btn-block btn-success mb-5">
+											Filter
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- /.col-lg-3 -->
+
+			<div class="col-lg-9">
+
+				<div class="row">
+					{% for product in data.products %}
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card h-80">
+							<a href="#"><img class="card-img-top" src="{{ url_for("static", filename=product["image"]) }}" alt=""></a>
+							<div class="card-body">
+								<h6 class="card-title">
+									<a href="{{ url_for('abc') }}">${{product["price"]}}</a>
+									<hr>
+								</h6>
+
+								<br>
+								<p>Brand: {{product["brand"]}}</p>
+								<p>Model: {{product["model"]}}</p>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<!-- /.row -->
+
+			</div>
+			<!-- /.col-lg-9 -->
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Hifari</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+	<a class="navbar-brand" href="/"><img style="width: 100px; height: 100px;" src="{{ url_for("static", filename='images/logo.png') }}" height="50" width="100" alt=""></a>
+	<div class=" navbar-" id="navbarResponsive">
+		<a style="float: right; margin-top: -60px;" class="nav-link" href="/">Home</a>
+	</div>
+
+	{% for product in data.products %}
+
+	<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card h-80">
+							<center>
+							<a href="#"><img Width=200px height= 100px class="card-img-top" src="{{ url_for("static", filename=product["image"]) }}" alt=""></a>
+							<div class="card-body">
+							<br>
+							
+							<h2>
+								<p>Brand: {{product["brand"]}}</p>
+								<p>Model: {{product["model"]}}</p>
+								<p>Lens Diameter: {{product["lens_diameter"]}}</p>
+								<p>Bridge Width: {{product["bridge_width"]}}</p>
+								<p>Side Length: {{product["side_length"]}}</p>
+							</h2>
+							</center>
+							</div>
+						</div>
+	</div>
+		
+	{% endfor %}
+</html>
